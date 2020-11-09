@@ -47,16 +47,11 @@
 	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<div class="container">
-		<h1>Bienvenue <%=pseudo%></h1>
-		<div class="input-group mb-3">
-			<div class="custom-file">
-				<input type="file" class="custom-file-input" id="inputGroupFile02">
-				<label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Upload account JSON</label>
-			</div>
-			<div class="input-group-append">
-				<span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
-			</div>
-		</div>
+			<h1>Bienvenue <%=pseudo%></h1>
+			<form name="uploadJson" action="/json" enctype="multipart/form-data" method="POST">
+				<input type="file" name="myFile" accept=".json"/>
+				<input type="submit" value="Upload a file"/>
+			 </form>
 		</div>
 	</div>
 

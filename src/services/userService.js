@@ -21,6 +21,6 @@ exports.isAuth = (req, res, next) => {
 	}
 	catch (error) {
 		req.params.token === 'Unauthorized' ? console.log ('no token') : console.error(error)
-		return res.sendStatus(401)
+		return res.redirect('/')
 	}
 }
