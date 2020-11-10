@@ -1,15 +1,14 @@
 const express = require('express')
 const router = express.Router()
-const multer = require('multer')
+const bodyParser = require('body-parser')
 const loginController = require('./controller/loginController')
 const userService = require('./services/userService')
 const userPageController = require('./controller/userPageController')
-const upload = multer()
 
 router.get('/', (req, res) => {
 	res.render('login')
 })
-router.post('/', upload.none(), (req, res) => {
+router.post('/', bodyParser.urlencoded({extended: true}), (req, res) => {
 	loginController.checkUser(req, res)
 })
 router.get('/:user/:token', userService.isAuth, (req, res) => {
