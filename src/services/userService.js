@@ -15,7 +15,6 @@ exports.createToken = (user) => {
 
 exports.isAuth = (req, res, next) => {
 	try {
-		console.log('User verified')
 		jwt.verify(req.params.token, process.env.JWT_SECRET)
 		next()
 	}
