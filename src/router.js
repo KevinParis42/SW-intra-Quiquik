@@ -11,6 +11,9 @@ router.get('/', (req, res) => {
 router.post('/', bodyParser.urlencoded({extended: true}), (req, res) => {
 	loginController.checkUser(req, res)
 })
+router.get('/users/:token', userService.isAuth, (req, res) => {
+	res.render('userList')
+})
 router.get('/:user/:token', userService.isAuth, (req, res) => {
 	userPageController.renderUserPage(req, res)
 })

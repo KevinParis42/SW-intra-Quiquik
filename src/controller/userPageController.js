@@ -8,11 +8,12 @@ exports.uploadAccountJson = (req, res) => {
 	const data = JSON.parse(file.data.toString('utf8'))
 	const token = jwtDecode(req.params.token)
 	accountService.saveJson(data, token.userId)
-	res.redirect(`/${token.pseudo}/${req.params.token}`)
+	setTimeout(() => {
+		res.redirect(`/${token.pseudo}/${req.params.token}`)
+	}, 1000)
 }
 
 exports.renderUserPage = async (req, res) => {
-	//recuperer info db
 	const account = await accountmodel.getAccount(jwtDecode(req.params.token).userId)
 	res.render('userPage', {pseudo : jwtDecode(req.params.token).pseudo, account})
 }
