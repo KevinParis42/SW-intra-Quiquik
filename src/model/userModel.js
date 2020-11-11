@@ -13,3 +13,8 @@ exports.findByMail = async (mail) => {
 	const userList = await User.find({mail : mail})
 	return userList[0]
 }
+
+exports.getuserList = async () => {
+	const userList = await User.find()
+	return userList
+}
