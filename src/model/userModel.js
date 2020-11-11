@@ -14,6 +14,11 @@ exports.findByMail = async (mail) => {
 	return userList[0]
 }
 
+exports.findByPseudo = async (pseudo) => {
+	const userList = await User.find({pseudo : pseudo})
+	return userList[0]
+}
+
 exports.getuserList = async () => {
 	const userList = await User.find()
 	return userList

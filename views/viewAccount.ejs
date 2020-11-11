@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<%- include('partials/header') %>
+	<title>User list</title>
+	<link href="../public/css/userPage.css" rel="stylesheet">
+</head>
+<body>
+	<%- include('partials/navbar') %>
+	<main role="main" style="padding-top: 3.5em;">
+		<div class="container">
+			<div class="container">
+				<% if (account) {%>
+					<p><%=account.wizardName %></p>
+					<p><%=account.wizardLvl%></p>
+					<ul>
+						<% account.units.forEach(function(unit) { %>
+							<li>
+								<p><strong><%= unit.name %></strong> <%= unit.lvl %></p>
+							</li>
+						<% }); %>
+					</ul>
+				<% } else {%>
+					<p>Cet utilisateur n'a pas encore uploader ses informations</p>
+				<% }%>
+			</div>
+		</div>
+		<!-- /container -->
+		</main>
+
+		<footer class="container">
+			<p>&copy; Kévin PARIS - 2020</p>
+		</footer>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+</html>
