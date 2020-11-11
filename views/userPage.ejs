@@ -48,37 +48,32 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1>Bienvenue <%=pseudo%></h1>
+			<p>Upload json to update your account on your page</p>
 			<form name="uploadJson" action="" enctype="multipart/form-data" method="POST">
-				<input type="file" name="accountJson" accept=".json"/>
+				<input type="file" name="accountJson" accept=".json" required/>
 				<input type="submit" value="Upload a file"/>
 			 </form>
 		</div>
 	</div>
 
 	<div class="container">
-		<!-- Example row of columns -->
-		<div class="row">
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-			<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+		<div class="container">
+			<% if (account) {%>
+				<p><%=account.wizardName %></p>
+				<p><%=account.wizardLvl%></p>
+				<ul>
+					<% account.units.forEach(function(unit) { %>
+						<li>
+							<p><strong><%= unit.name %></strong> <%= unit.lvl %></p>
+						</li>
+					<% }); %>
+				</ul>
+			<% } else {%>
+				<p>Vous n'avez pas de JSON en mémoire, merci d'en upload un</p>
+			<% }%>
 		</div>
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-			<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-		</div>
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-			<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-		</div>
-		</div>
-
-		<hr>
-
-	</div> <!-- /container -->
-
+	</div>
+	<!-- /container -->
 	</main>
 
 	<footer class="container">

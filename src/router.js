@@ -12,7 +12,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), (req, res) => {
 	loginController.checkUser(req, res)
 })
 router.get('/:user/:token', userService.isAuth, (req, res) => {
-	res.render('userPage', {pseudo : req.params.user})
+	userPageController.renderUserPage(req, res)
 })
 router.post('/json/:token', userService.isAuth, (req, res) => {
 	userPageController.uploadAccountJson(req, res)

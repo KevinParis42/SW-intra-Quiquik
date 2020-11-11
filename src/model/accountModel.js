@@ -11,5 +11,10 @@ const gameAccountSchema = mongoose.Schema({
 	wizardLvl : Number,
 	units : [unitSchema]
 })
+const GameAccount = mongoose.model('gameAccount', gameAccountSchema)
 
-exports.GameAccount = mongoose.model('gameAccount', gameAccountSchema)
+exports.getAccount = (id) => {
+	return GameAccount.findOne({userId : id})
+}
+
+exports.GameAccount = GameAccount
