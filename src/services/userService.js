@@ -7,6 +7,7 @@ exports.checkPassword = (inputPassword, dbPassword) => {
 
 exports.createToken = (user) => {
 	return jwt.sign({
+		userId : user._id,
 		pseudo : user.pseudo,
 		mail : user.mail,
 		role : user.role,

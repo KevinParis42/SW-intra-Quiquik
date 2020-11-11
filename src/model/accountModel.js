@@ -1,17 +1,15 @@
 const mongoose = require('mongoose')
 
-const monsterSchema = mongoose.Schema({
+const unitSchema = mongoose.Schema({
 	name : String,
 	lvl : Number
-
-
 })
-
-const Monster = mongoose.model('user', monsterSchema)
 
 const gameAccountSchema = mongoose.Schema({
-	userid : String,
+	userId : {type : mongoose.Types.ObjectId, ref : 'user'},
 	wizardName : String,
-	wizardLevel : Number,
-
+	wizardLvl : Number,
+	units : [unitSchema]
 })
+
+exports.GameAccount = mongoose.model('gameAccount', gameAccountSchema)

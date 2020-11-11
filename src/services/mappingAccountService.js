@@ -1,6 +1,6 @@
 // initial code from : https://github.com/Xzandro/sw-exporter/blob/master/app/mapping.js
 
-class Mapping  {
+exports.Mapping = class Mapping  {
 	constructor() {
 		this.monster = {
 			attributes: {
@@ -1779,5 +1779,3 @@ class Mapping  {
 		}
 	}
 }
-
-module.exports.Mapping = Mapping
