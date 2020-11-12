@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
 	<%- include('partials/header') %>
-	<title>User list</title>
-	<link href="../public/css/userPage.css" rel="stylesheet">
+	<title>Liste des membres</title>
+	<link href="/public/css/userPage.css" rel="stylesheet">
 </head>
 <body>
 	<%- include('partials/navbar') %>
@@ -11,15 +11,20 @@
 		<div class="container">
 			<div class="container">
 				<% if (account) {%>
-					<p><%=account.wizardName %></p>
-					<p><%=account.wizardLvl%></p>
-					<ul>
-						<% account.units.forEach(function(unit) { %>
-							<li>
-								<p><strong><%= unit.name %></strong> <%= unit.lvl %></p>
-							</li>
-						<% }); %>
-					</ul>
+					<p>Pseudo : <%=account.wizardName %></p>
+					<p>Lvl : <%=account.wizardLvl%></p>
+					<hr>
+					<% account.units.forEach(function(unit) { %>
+						<div class="row">
+							<div class="col-sm">
+								<p><strong><%= unit.name %></strong></p>
+							</div>
+							<div class="col-sm">
+								<p> <%= unit.lvl %></p>
+							</div>
+						</div>
+						<hr>
+					<% }); %>
 				<% } else {%>
 					<p>Cet utilisateur n'a pas encore uploader ses informations</p>
 				<% }%>

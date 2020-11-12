@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const unitSchema = mongoose.Schema({
 	name : String,
-	lvl : Number
+	lvl : Number,
+	class : Number
 })
 
 const gameAccountSchema = mongoose.Schema({

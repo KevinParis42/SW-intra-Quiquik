@@ -1,9 +1,11 @@
 function login() {
 	var logForm = document.querySelector('.form-signin')
+	var form = new FormData(logForm)
 	event.preventDefault()
+
 	fetch('/', {
 		method: 'POST',
-		body: new FormData(logForm)
+		body: form
 	})
 	.then(res => res.text())
 	.then(msg => {

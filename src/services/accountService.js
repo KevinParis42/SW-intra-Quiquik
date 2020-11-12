@@ -12,9 +12,11 @@ exports.saveJson = (data, id) => {
 		doc.wizardLvl = data.wizard_info.wizard_level
 		for (let unit of data.unit_list) {
 			//save each unit and info in db
+			console.log(unit.class)
 			doc.units.push({
 				name : mapping.getMonsterName(unit.unit_master_id),
-				lvl : unit.unit_level
+				lvl : unit.unit_level,
+				class : unit.class
 			})
 		}
 		doc.save();
