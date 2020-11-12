@@ -42,6 +42,7 @@ exports.saveJson = async (data, id) => {
 		if (err) console.error(err)
 		doc.wizardName = data.wizard_info.wizard_name
 		doc.wizardLvl = data.wizard_info.wizard_level
+		console.log('scrapping en cours')
 		for (let unit of data.unit_list) {
 			//save each unit and info in db
 			let name = mapping.getMonsterName(unit.unit_master_id)
@@ -54,5 +55,6 @@ exports.saveJson = async (data, id) => {
 			})
 		}
 		doc.save();
+		console.log('scrapping terminé')
 	  })
 }

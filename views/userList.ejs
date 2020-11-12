@@ -10,13 +10,14 @@
 	<main role="main" style="padding-top: 3.5em;">
 		<div class="container-fluid">
 			<div class="container" style="min-height: max-content;">
-				<ul>
 					<% userList.forEach(function(user) { %>
-						<li>
-							<a href="/users/<%= user.pseudo %>/<%= token %>"><%= user.pseudo %></a>
-						</li>
+						<div class="row">
+							<div class="col">
+								<a href="/users/<%= user.pseudo %>/<%= token %>"><%= user.pseudo %></a>
+								<hr>
+							</div>
+						</div>
 					<% }); %>
-				</ul>
 			</div>
 		</div>
 	</main>

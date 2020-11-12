@@ -14,13 +14,33 @@
 					<p>Pseudo : <%=account.wizardName %></p>
 					<p>Lvl : <%=account.wizardLvl%></p>
 					<hr>
+					<div class="row">
+						<div class="col">
+						</div>
+						<div class="col">
+							<p><strong>Monstre</strong></p>
+						</div>
+						<div class="col">
+							<p><strong>Niveau</strong></p>
+						</div>
+						<div class="col">
+							<p><strong>Grade</strong></p>
+						</div>
+					</div>
+					<hr>
 					<% account.units.forEach(function(unit) { %>
 						<div class="row">
-							<div class="col-sm">
-								<p><strong><%= unit.name %></strong></p>
+							<div class="col">
+								<img src="<%= unit.iconUrl %>" alt="" width="80" height="80">
 							</div>
-							<div class="col-sm">
+							<div class="col">
+								<p><%= unit.name %></p>
+							</div>
+							<div class="col">
 								<p> <%= unit.lvl %></p>
+							</div>
+							<div class="col">
+								<p> <%= unit.class %>*</p>
 							</div>
 						</div>
 						<hr>
