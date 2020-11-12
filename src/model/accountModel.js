@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const unitSchema = mongoose.Schema({
 	name : String,
 	lvl : Number,
-	class : Number
+	class : Number,
+	iconUrl : String
 })
 
 const gameAccountSchema = mongoose.Schema({

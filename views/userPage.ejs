@@ -28,6 +28,9 @@
 			<hr>
 			<div class="row">
 				<div class="col">
+					<p><strong>Icône</strong></p>
+				</div>
+				<div class="col">
 					<p><strong>Monstre</strong></p>
 				</div>
 				<div class="col">
@@ -40,6 +43,9 @@
 			<hr>
 			<% account.units.forEach(function(unit) { %>
 				<div class="row">
+					<div class="col">
+						<img src="<%= unit.iconUrl %>" alt="" width="80" height="80">
+					</div>
 					<div class="col">
 						<p><%= unit.name %></p>
 					</div>
