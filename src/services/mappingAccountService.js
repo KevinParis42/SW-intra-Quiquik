@@ -1688,7 +1688,6 @@ exports.Mapping = class Mapping  {
 	}
 
 	getMonsterName(id) {
-		console.log()
 		if (id) {
 			if (this.monster.names[id]) {
 				return this.monster.names[id]
