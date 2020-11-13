@@ -1,6 +1,8 @@
+const got = require('got')
+const cron = require('node-cron')
+const chalk = require('chalk')
 const {Mapping} = require('../services/mappingAccountService')
 const accountModel = require('../model/accountModel')
-const got = require('got')
 
 
 const unitIconScrapping = async (unitName) => {
@@ -34,27 +36,51 @@ const unitIconScrapping = async (unitName) => {
 	return null
 }
 
+const saveUnitIcons = async () => {
+	const mapping = new Mapping
+	const nameCollection = mapping.monster.names
+
+	console.log(chalk.red("units icons urls updating... please, do not restart the server"))
+	for (let id in nameCollection) {
+		if (nameCollection[id] != '') {
+			if (id < 999) {
+				let unawakened = [nameCollection[id] + ' (Fire)', nameCollection[id] + ' (Water)', nameCollection[id] + ' (Wind)', nameCollection[id] + ' (Light)', nameCollection[id] + ' (Dark)']
+				for (let elem of unawakened) {
+					accountModel.updateMonsterIconUrl(elem, await unitIconScrapping(elem))
+				}
+			}
+			else {
+				accountModel.updateMonsterIconUrl(nameCollection[id], await unitIconScrapping(nameCollection[id]))
+			}
+		}
+	}
+	console.log(chalk.green('units icons urls up to date !'))
+}
+// update icons url every sunday at 4:00
+cron.schedule('0 4 * * Sun', () =>{
+	saveUnitIcons()
+})
+
 exports.saveJson = async (data, id) => {
 	const mapping = new Mapping
-	//const account = new accountModel.GameAccount()
+	const doc = {
+		wizardName : data.wizard_info.wizard_name,
+		wizardLvl : data.wizard_info.wizard_level,
+		units : []
+	}
+	for (let unit of data.unit_list) {
+		let name = mapping.getMonsterName(unit.unit_master_id)
+		let url = await accountModel.getMonsterIconUrl(name)
+		doc.units.push({
+			name : name,
+			lvl : unit.unit_level,
+			class : unit.class,
+			iconUrl : url
+		})
+	}
 
-	accountModel.GameAccount.findOneAndUpdate({ userId : id}, {userId : id}, {upsert : true, useFindAndModify : false, new : true}, async function (err, doc){
+	accountModel.GameAccount.findOneAndUpdate({ userId : id}, doc, {upsert : true, useFindAndModify : false, new : true}, async function (err, doc){
 		if (err) console.error(err)
-		doc.wizardName = data.wizard_info.wizard_name
-		doc.wizardLvl = data.wizard_info.wizard_level
-		console.log('scrapping en cours')
-		for (let unit of data.unit_list) {
-			//save each unit and info in db
-			let name = mapping.getMonsterName(unit.unit_master_id)
-			let url = await unitIconScrapping(name)
-			doc.units.push({
-				name : name,
-				lvl : unit.unit_level,
-				class : unit.class,
-				iconUrl : url
-			})
-		}
-		doc.save();
-		console.log('scrapping terminé')
-	  })
+		console.log(chalk.yellowBright(`${doc.wizardName}'s game account is now up to date in db`))
+	})
 }

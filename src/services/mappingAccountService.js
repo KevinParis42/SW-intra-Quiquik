@@ -971,34 +971,34 @@ exports.Mapping = class Mapping  {
 			  23915: 'Mirinae',
 
 			  240: 'RYU',
-			  24011: 'RYU',
-			  24012: 'RYU',
-			  24013: 'RYU',
-			  24014: 'RYU',
-			  24015: 'RYU',
+			  24011: 'RYU (Water)',
+			  24012: 'RYU (Fire)',
+			  24013: 'RYU (Wind)',
+			  24014: 'RYU (Light)',
+			  24015: 'RYU (Dark)',
 
 			  241: 'KEN',
 
 			  242: 'M. BISON',
-			  24211: 'M. BISON',
-			  24212: 'M. BISON',
-			  24213: 'M. BISON',
-			  24214: 'M. BISON',
-			  24215: 'M. BISON',
+			  24211: 'M. BISON (Water)',
+			  24212: 'M. BISON (Fire)',
+			  24213: 'M. BISON (Wind)',
+			  24214: 'M. BISON (Light)',
+			  24215: 'M. BISON (Dark)',
 
 			  243: 'DHALSIM',
-			  24311: 'DHALSIM',
-			  24312: 'DHALSIM',
-			  24313: 'DHALSIM',
-			  24314: 'DHALSIM',
-			  24315: 'DHALSIM',
+			  24311: 'DHALSIM (Water)',
+			  24312: 'DHALSIM (Fire)',
+			  24313: 'DHALSIM (Wind)',
+			  24314: 'DHALSIM (Light)',
+			  24315: 'DHALSIM (Dark)',
 
 			  244: 'CHUN-LI',
-			  24411: 'CHUN-LI',
-			  24412: 'CHUN-LI',
-			  24413: 'CHUN-LI',
-			  24414: 'CHUN-LI',
-			  24415: 'CHUN-LI',
+			  24411: 'CHUN-LI (Water)',
+			  24412: 'CHUN-LI (Fire)',
+			  24413: 'CHUN-LI (Wind)',
+			  24414: 'CHUN-LI (Light)',
+			  24415: 'CHUN-LI (Dark)',
 
 			  245: 'Striker',
 			  24511: 'Moore',
@@ -1034,12 +1034,12 @@ exports.Mapping = class Mapping  {
 			  15105: 'Devilmon',
 			  14314: 'Rainbowmon',
 
-			  1000111: 'Homunculus - Attack (Water)',
-			  1000112: 'Homunculus - Attack (Fire)',
-			  1000113: 'Homunculus - Attack (Wind)',
+			  1000111: 'Homunculus (Water)',
+			  1000112: 'Homunculus (Fire)',
+			  1000113: 'Homunculus (Wind)',
 
-			  1000214: 'Homunculus - Support (Light)',
-			  1000215: 'Homunculus - Support (Dark)'
+			  1000214: 'Homunculus (Light)',
+			  1000215: 'Homunculus (Dark)'
 			}
 		  },
 		this.rune = {

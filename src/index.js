@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const chalk = require('chalk')
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
 const router = require('./router')
@@ -18,5 +19,5 @@ app.use('/', router)
 DbModel.dbConnect()
 
 app.listen(process.env.PORT, () => {
-	console.log(`app launched on port ${process.env.PORT}`)
+	console.log(chalk.greenBright(`app launched on port ${process.env.PORT}`))
 })

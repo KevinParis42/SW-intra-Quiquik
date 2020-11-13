@@ -10,7 +10,7 @@ exports.uploadAccountJson = (req, res) => {
 	accountService.saveJson(data, token.userId)
 	setTimeout(() => {
 		res.redirect(`/${token.pseudo}/${req.params.token}`)
-	}, 1000)
+	}, 2000)
 }
 
 exports.renderUserPage = async (req, res) => {
