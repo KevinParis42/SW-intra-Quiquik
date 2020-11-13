@@ -9,10 +9,12 @@ const userSchema = mongoose.Schema({
 
 const User = mongoose.model('user', userSchema)
 
-exports.findByMail = async (mail) => {
+const findByMail = async (mail) => {
 	const userList = await User.find({mail : mail})
 	return userList[0]
 }
+
+exports.findByMail = findByMail
 
 exports.findByPseudo = async (pseudo) => {
 	const userList = await User.find({pseudo : pseudo})
@@ -22,4 +24,15 @@ exports.findByPseudo = async (pseudo) => {
 exports.getuserList = async () => {
 	const userList = await User.find()
 	return userList
+}
+
+exports.createUser = async (mail, pseudo, password, role) => {
+	User.create({
+		pseudo : pseudo,
+		mail : mail,
+		password : password,
+		role : role
+	}, (err, doc) => {
+		if (err) throw err
+	})
 }

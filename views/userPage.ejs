@@ -3,7 +3,7 @@
 <head>
 	<%- include('partials/header') %>
 	<link href="../public/css/userPage.css" rel="stylesheet">
-	<title><%=pseudo%>'s page</title>
+	<title><%=tokenInfo.pseudo%>'s page</title>
 </head>
 <body>
 	<%- include('partials/navbar') %>
@@ -12,7 +12,7 @@
 	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Bienvenue <%=pseudo%></h1>
+			<h1>Bienvenue <%=tokenInfo.pseudo%></h1>
 			<p>Uploadez un JSON afin de mettre vos informations à jours</p>
 			<form name="uploadJson" action="" enctype="multipart/form-data" method="POST">
 				<input type="file" name="accountJson" accept=".json" required/>

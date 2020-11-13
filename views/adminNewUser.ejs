@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<%- include('partials/header') %>
+	<title>User list</title>
+	<link href="/public/css/userPage.css" rel="stylesheet">
+</head>
+<body>
+	<%- include('partials/navbar') %>
+	<main role="main" style="padding-top: 3.5em;">
+		<div class="container">
+			<div class="container newUser">
+				<form id="newUserForm">
+					<h1 class="h3 mb-3 font-weight-normal">Nouvel utilisateur</h1>
+					<label for="newUserMail" class="sr-only">Adresse mail</label>
+					<input type="email" id="newUserMail" name="newUserMail" class="form-control" placeholder="Adresse mail" required autofocus>
+					<label for="newuserPseudo" class="sr-only">Pseudo</label>
+					<input type="text" id="newuserPseudo" name="newuserPseudo" class="form-control" placeholder="Pseudo" required>
+					<label for="newUserPassword" class="sr-only">Mot de passe</label>
+					<input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Mot de passe" required>
+					<label for="newUserForm">Rôle ?</label>
+					<select name="role" id="role" form="newUserForm">
+						<option value="user">User</option>
+						<option value="moderator">Moderator</option>
+						<option value="admin">Admin</option>
+					</select>
+					<button class="btn btn-lg btn-primary btn-block" onclick="createUser()">Créer</button>
+				</form>
+			</div>
+		</div>
+	</main>
+	<%- include('partials/footer') %>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+	<script src="/public/js/adminNewuser.js"></script>
+</html>

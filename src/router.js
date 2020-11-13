@@ -6,6 +6,7 @@ const userService = require('./services/userService')
 const userPageController = require('./controller/userPageController')
 const userListController = require('./controller/userListController')
 const viewAccountController = require('./controller/viewAccountController')
+const adminController = require('./controller/adminController')
 
 router.get('/', (req, res) => {
 	res.render('login')
@@ -24,6 +25,12 @@ router.get('/:user/:token', userService.isAuth, (req, res) => {
 })
 router.post('/json/:token', userService.isAuth, (req, res) => {
 	userPageController.uploadAccountJson(req, res)
+})
+router.get('/admin/newUser/:token', userService.isAuth, (req, res) => {
+	adminController.renderNewUserPage(req, res)
+})
+router.post('/admin/newUser', bodyParser.urlencoded({extended: true}), (req, res) => {
+	adminController.createUser(req, res)
 })
 
 module.exports = router

@@ -15,5 +15,5 @@ exports.uploadAccountJson = (req, res) => {
 
 exports.renderUserPage = async (req, res) => {
 	const account = await accountmodel.getAccount(jwtDecode(req.params.token).userId)
-	res.render('userPage', {pseudo : jwtDecode(req.params.token).pseudo, account})
+	res.render('userPage', {tokenInfo : jwtDecode(req.params.token), account})
 }
